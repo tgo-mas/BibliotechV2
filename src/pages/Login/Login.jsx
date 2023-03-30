@@ -1,14 +1,17 @@
-import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Container, Form, FormControl } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import googleIcon from "../../assets/icons/google-white.svg";
+import { InputGroup } from "react-bootstrap";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import "./Login.css";
 
 export function Login() {
+  const [mostrarSenhaV, SetMostrarSenha] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -54,6 +57,10 @@ export function Login() {
 
   const usuarioLogado = useContext(AuthContext);
 
+  const mostrarSenha = () => {
+    SetMostrarSenha(!mostrarSenhaV);
+  };
+
   // Se tiver dados no objeto, está logado
   if (usuarioLogado !== null) {
     return <Navigate to="/" />;
@@ -61,46 +68,78 @@ export function Login() {
 
   return (
     <Container fluid className="my-5">
-      <p className="text-center">
-        <img src={loginImg} width="256" alt="Logo" />
-      </p>
-      <h4>Bem-vindo(a) de volta!</h4>
-      <p className="text-muted">
-        Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-      </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
-        Google
-      </Button>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Seu email"
-            className={errors.email ? "is-invalid" : ""}
-            {...register("email", { required: "Email é obrigatório" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.email?.message}
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="senha">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Sua senha"
-            className={errors.senha ? "is-invalid" : ""}
-            {...register("senha", { required: "Senha é obrigatória" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
-        </Form.Group>
-        <Button type="submit" variant="success">
-          Entrar
-        </Button>
+      <Form
+        className="mt-5 form-Login border p-2 d-flex flex-column justify-content-center align-items-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <p className="text-center">
+          <img className="imgLoginForm" src={loginImg} width="200" alt="Logo" />
+        </p>
+        <h4>Bem-vindo(a) de volta!</h4>
+        <div className="Form-Login-Master">
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Seu email"
+              className={errors.email ? "is-invalid input-Form" : "input-Form"}
+              {...register("email", { required: "Email é obrigatório" })}
+            />
+            <Form.Text className="invalid-feedback">
+              {errors.email?.message}
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="senha">
+            <Form.Label>Senha:</Form.Label>
+            <InputGroup>
+              <FormControl
+                type={mostrarSenhaV ? "text" : "password"}
+                placeholder="Sua senha"
+                className={
+                  errors.senha ? "is-invalid input-Form" : "input-Form"
+                }
+                {...register("senha", { required: "Senha é obrigatória" })}
+                autoComplete="off"
+              />
+              <a className="mostrarSenha mt-3 mx-1" onClick={mostrarSenha}>
+                <i className={`bi bi-eye${mostrarSenhaV ? "-slash" : ""}`}></i>
+              </a>
+            </InputGroup>
+            <Form.Text className="invalid-feedback">
+              {errors.senha?.message}
+            </Form.Text>
+            <p className="text-muted mt-3">
+              Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
+            </p>
+          </Form.Group>
+          <div className="btn-Form-Login d-flex justify-content-center w-100">
+            <Button
+              type="submit"
+              variant="success"
+              className="btn-block btn-login"
+            >
+              Entrar
+            </Button>
+          </div>
+          <hr className="mt-4 mb-4" />
+          <p className="text-center text-muted">Outras opções de login:</p>
+        </div>
+        <div className="flex-c-m d-flex justify-content-center mb-3">
+          <a href="#" className="login100-social-item bg1">
+            <i className="bi bi-facebook"></i>
+          </a>
+          <a href="#" className="login100-social-item bg2">
+            <i className="bi bi-github"></i>
+          </a>
+          <a
+            href="#"
+            className="login100-social-item bg3"
+            onClick={onLoginGoogle}
+          >
+            <i className="bi bi-google"></i>
+          </a>
+        </div>
       </Form>
     </Container>
   );
