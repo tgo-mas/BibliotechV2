@@ -17,8 +17,8 @@ export async function addLivro(data) {
 export async function getLivros() {
     const snapshot = await getDocs(livrosCollection);
     let livros = [];
-    snapshot.forEach(doc => {
-        livros.push({...doc.data(), id: doc.id});
+    snapshot.forEach(livro => {
+        livros.push({...livro.data(), id: livro.id});
     })
     return livros;
 }

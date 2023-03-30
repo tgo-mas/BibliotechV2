@@ -3,12 +3,15 @@ import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
+import { ModalLivro } from "../../components/ModalLivro/ModalLivro";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 
 export function Livros() {
 
     const [livros, setLivros] = useState(null);
+    const [show, setShow] = useState(false);
+    const [livroModal, setLivroModal] = useState({});
 
     useEffect(() => {
         initializeTable();
@@ -22,13 +25,20 @@ export function Livros() {
 
     function onDeleteLivro(id, titulo) {
         const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
-        if(deletar) {
+        if (deletar) {
             deleteLivro(id).then(() => {
-                toast.success(`${titulo} apagado com sucesso!`, {duration: 2000, position: "bottom-right"});
+                toast.success(`${titulo} apagado com sucesso!`, { duration: 2000, position: "bottom-right" });
                 initializeTable();
             })
         }
     }
+
+    function showModalLivro(livro) {
+        setLivroModal(livro.id);
+        setShow(true);
+    }
+
+    const closeModal = () => setShow(false);
 
     return (
         <div className="livros">
@@ -42,7 +52,7 @@ export function Livros() {
                 <hr />
                 {livros === null ?
                     <Loader />
-                    : 
+                    :
                     <Table striped bordered hover>
                         <thead>
                             <tr>
@@ -78,6 +88,9 @@ export function Livros() {
                                             <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
                                                 <i className="bi bi-trash3-fill"></i>
                                             </Button>
+                                            <Button className="ms-2" size="sm" variant="success" onClick={() => showModalLivro(livro)}>
+                                                <i className="bi bi-journal-text"></i>
+                                            </Button>
                                         </td>
                                     </tr>
                                 )
@@ -86,6 +99,8 @@ export function Livros() {
                     </Table>
                 }
             </Container>
+
+            <ModalLivro show={show} idLivro={livroModal} onClose={closeModal} />
         </div>
     )
 }
