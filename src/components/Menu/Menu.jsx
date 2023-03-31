@@ -34,7 +34,7 @@ export function Menu() {
               Emprestimos
             </Nav.Link>
             <Nav.Link as={Link} to="/">
-            {usuarioLogado.email}
+              {usuarioLogado?.email}
             </Nav.Link>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
