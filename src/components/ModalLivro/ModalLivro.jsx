@@ -10,21 +10,23 @@ export function ModalLivro({ idLivro, show, onClose }) {
     const [livro, setLivro] = useState({});
 
     useEffect(() => {
-        setLivro(null);
-        getLivro(idLivro)
-            .then((busca) => setLivro(busca));
+        if(idLivro != null){
+            setLivro(null);
+            getLivro(idLivro)
+                .then((busca) => setLivro(busca));
+        }
     }, [idLivro]);
 
     return (
         <Modal show={show} onHide={onClose}>
             <Modal.Header closeButton>
-                <Modal.Title>
+                <Modal.Title className="text-center">
                     Detalhes do Livro
+                    {livro === null ? <Loader /> : <></>}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="modal-body">
-                {livro === null ?
-                    <Loader /> :
+                {livro !== null ?
                     <>
                         <div>
                             <h2>{livro.titulo}</h2>
@@ -35,7 +37,7 @@ export function ModalLivro({ idLivro, show, onClose }) {
                             </p>
                         </div>
                         <img src={livro.urlCapa} alt={`Capa do livro ${livro.titulo}`} />
-                    </>}
+                    </> : <></>}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="success" onClick={onClose}>
@@ -44,5 +46,5 @@ export function ModalLivro({ idLivro, show, onClose }) {
             </Modal.Footer>
         </Modal>
     )
-
+    
 }

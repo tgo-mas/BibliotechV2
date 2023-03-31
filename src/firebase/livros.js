@@ -24,8 +24,8 @@ export async function getLivros() {
 }
 
 export async function getLivro(id) {
-    const document = await getDoc(doc(livrosCollection, id));
-    return {...document.data(), id: document.id};
+    const livro = await getDoc(doc(livrosCollection, id));
+    return {...livro.data(), id: livro.id};
 }
 
 export async function updateLivro(id, data) {

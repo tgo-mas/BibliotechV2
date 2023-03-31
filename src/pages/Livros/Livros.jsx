@@ -11,7 +11,7 @@ export function Livros() {
 
     const [livros, setLivros] = useState(null);
     const [show, setShow] = useState(false);
-    const [livroModal, setLivroModal] = useState({});
+    const [livroModal, setLivroModal] = useState(null);
 
     useEffect(() => {
         initializeTable();
@@ -43,7 +43,7 @@ export function Livros() {
     return (
         <div className="livros">
             <Container>
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center mt-3">
                     <h1>Livros</h1>
                     <Button as={Link} to="/livros/adicionar" variant="success">
                         Adicionar Livro
@@ -53,7 +53,7 @@ export function Livros() {
                 {livros === null ?
                     <Loader />
                     :
-                    <Table striped bordered hover>
+                    <Table striped bordered hover className="text-center">
                         <thead>
                             <tr>
                                 <th>Título</th>
