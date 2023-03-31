@@ -1,0 +1,54 @@
+.form-Login {
+  width: 60%;
+  justify-content: center;
+  margin: 0 auto;
+}
+.input-Form {
+  width: 500px !important;
+  border: 1px solid black !important;
+  border-radius: 5px !important;
+  height: 50px !important;
+}
+.input-Group-Form {
+    width: 500px !important;
+}
+.btn-login {
+  width: 250px !important;
+  border: 2px solid black !important;
+}
+.login100-social-item {
+  font-size: 25px;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 5px;
+}
+.login100-social-item:hover {
+  color: #fff;
+  background-color: #524444b6;
+}
+.bg1 {
+  background-color: #3b5998;
+}
+.bg2 {
+  background-color: #171515;
+}
+.bg3 {
+  background-color: #ea4335;
+}
+.mostrarSenha:hover {
+    cursor: pointer;
+}
+.mostrarSenha {
+    position: absolute !important;
+    right: 5px !important;
+    bottom: 12px;
+}   
