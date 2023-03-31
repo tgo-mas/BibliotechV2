@@ -15,6 +15,7 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Carregamento } from "./pages/Carregamento/Carregamento";
+import { NotFound } from "./pages/NotFound/NotFound";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -48,6 +49,7 @@ export function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/loading" element={<Carregamento />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
