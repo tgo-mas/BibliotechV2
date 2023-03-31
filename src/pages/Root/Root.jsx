@@ -13,16 +13,12 @@ export function Root() {
   useEffect(() => {
     if(usuarioLogado === null){
       navigator("/loading");
-    }else{
-      navigator("/");
     }
   }, [])
 
   setTimeout(() => {
     if(usuarioLogado === null){
       navigator("/login");
-    }else{
-      navigator("/");
     }
   }, 1500);
 
