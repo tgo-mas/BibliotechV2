@@ -1,7 +1,7 @@
 import "./Menu.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext"
@@ -9,13 +9,9 @@ import { AuthContext } from "../../contexts/AuthContext"
 export function Menu() {
   const navigate = useNavigate();
   const usuarioLogado = useContext (AuthContext);
-  
-
+ 
   function onLogout() {
-    logout().then(() => {
-      navigate("/login");
-    
-    });
+    logout();
   }
 
   return (
