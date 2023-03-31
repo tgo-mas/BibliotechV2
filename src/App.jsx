@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
 
 export function App() {
@@ -27,7 +28,6 @@ export function App() {
       // user tem objeto = logado
       setUsuarioLogado(user);
     });
-
     // Esse efeito irá rodar apenas uma vez
     // Quando o App for renderizado/inicializado
   }, []);
@@ -48,11 +48,11 @@ export function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/loading" element={<Carregamento />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />
-    </>
-  );
+    </>);
 }

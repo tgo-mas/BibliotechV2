@@ -1,16 +1,13 @@
 import "./Menu.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 
 export function Menu() {
-  const navigate = useNavigate();
 
   function onLogout() {
-    logout().then(() => {
-      navigate("/login");
-    });
+    logout();
   }
 
   return (
