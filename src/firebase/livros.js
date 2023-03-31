@@ -17,15 +17,15 @@ export async function addLivro(data) {
 export async function getLivros() {
     const snapshot = await getDocs(livrosCollection);
     let livros = [];
-    snapshot.forEach(doc => {
-        livros.push({...doc.data(), id: doc.id});
+    snapshot.forEach(livro => {
+        livros.push({...livro.data(), id: livro.id});
     })
     return livros;
 }
 
 export async function getLivro(id) {
-    const document = await getDoc(doc(livrosCollection, id));
-    return {...document.data(), id: document.id};
+    const livro = await getDoc(doc(livrosCollection, id));
+    return {...livro.data(), id: livro.id};
 }
 
 export async function updateLivro(id, data) {
