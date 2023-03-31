@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -7,12 +7,23 @@ import { AuthContext } from "../../contexts/AuthContext";
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
   const usuarioLogado = useContext(AuthContext);
+  const navigator = useNavigate();
 
-  if (usuarioLogado === null) {
-    // se está deslogado
-    // redireciona para a página de login
-    return <Navigate to="/login" />;
-  }
+  useEffect(() => {
+    if(usuarioLogado === null){
+      navigator("/loading");
+    }else{
+      navigator("/");
+    }
+  }, [])
+
+  setTimeout(() => {
+    if(usuarioLogado === null){
+      navigator("/login");
+    }else{
+      navigator("/");
+    }
+  }, 1500);
 
   return (
     <>
