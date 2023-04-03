@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
 import "./Login.css";
 
 export function Login() {
@@ -54,6 +54,23 @@ export function Login() {
       });
   }
 
+  function onLoginFacebook() {
+    loginFacebook()
+      .then((res) => {
+        toast.success(`Bem-vindo(a) ${res.user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. ${erro.message}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      })
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   const mostrarSenha = () => {
@@ -64,7 +81,7 @@ export function Login() {
   if (usuarioLogado !== null) {
     return <Navigate to="/" />;
   }
-  
+
   return (
     <Container fluid className="my-5">
       <hr />
@@ -125,10 +142,17 @@ export function Login() {
           <p className="text-center text-muted">Outras opções de login:</p>
         </div>
         <div className="flex-c-m d-flex justify-content-center mb-3">
-          <a href="#" className="login100-social-item bg1 shadow">
+          <a
+            href="#"
+            className="login100-social-item bg1 shadow"
+            onClick={onLoginFacebook}
+          >
             <i className="bi bi-facebook"></i>
           </a>
-          <a href="#" className="login100-social-item bg2 shadow">
+          <a
+            href="#"
+            className="login100-social-item bg2 shadow"
+          >
             <i className="bi bi-github"></i>
           </a>
           <a
