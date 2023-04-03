@@ -20,6 +20,8 @@ export function AdicionarEmprestimo() {
   function onSubmit(data) {
     getLivro(data.idLivro).then((livro) => {
       delete data.idLivro;
+      data.dataEntrega = new Date(Date.parse(data.dataEntrega));
+      data.dataEntrega.setDate(data.dataEntrega.getDate() + 1);
       let novoEmprestimo = {
         ...data,
         status: "Pendente",
@@ -43,7 +45,7 @@ export function AdicionarEmprestimo() {
   }, []);
 
   return (
-    <div className="adicionar-emprestimo">
+    <div className="adicionar-emprestimo m-3">
       <Container>
         <h1>Adicionar empréstimo</h1>
         <hr />
@@ -104,6 +106,19 @@ export function AdicionarEmprestimo() {
             </Form.Select>
             <Form.Text className="invalid-feedback">
               {errors.idLivro?.message}
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Data de Entrega</Form.Label>
+            <Form.Control
+              type="date"
+              className={errors.dataEntrega && "is-invalid"}
+              {...register("dataEntrega", {
+                required: "A data de entrega é obrigatória!",
+              })}
+            />
+            <Form.Text className="invalid-feedback">
+              {errors.dataEntrega?.message}
             </Form.Text>
           </Form.Group>
           <Button type="submit" variant="success">

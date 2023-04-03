@@ -38,7 +38,7 @@ export function EditarEmprestimo() {
     }, [id, reset]);
 
     return (
-        <div className="editar-emprestimo">
+        <div className="editar-emprestimo m-3">
             <Container>
                 <h1>Editar empréstimo</h1>
                 <hr />

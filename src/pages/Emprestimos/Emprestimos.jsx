@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Badge, Button, Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getEmprestimos } from "../../firebase/emprestimos";
+import { getEmprestimos, updateEmprestimo } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
 
 export function Emprestimos() {
@@ -9,15 +9,36 @@ export function Emprestimos() {
 
   useEffect(() => {
     getEmprestimos().then((busca) => {
+      busca.forEach((emprestimo) => {
+        let agora = new Date(Date.now());
+        console.log(emprestimo.dataEntrega);
+        if(agora.getTime() > emprestimo.dataEntrega.toDate().getTime() && emprestimo.status !== "Atrasado"){
+            emprestimo.status = "Atrasado";
+            updateEmprestimo(emprestimo.id, emprestimo);
+        }
+      })
       setEmprestimos(busca);
     });
   }, []);
+
+  function getBadgeStatus(status){
+    switch(status){
+        case "Atrasado":
+            return "danger";
+        case "Pendente":
+            return "warning";
+        case "Entregue":
+            return "success";
+        default:
+            return "secondary";
+    }
+  }
 
   return (
     <div className="emprestimos mt-3">
       <Container>
         <div className="d-flex justify-content-between align-items-center">
-          <h1>Emprestimos</h1>
+          <h1>Empréstimos</h1>
           <Button as={Link} to="/emprestimos/adicionar" variant="success">
             Adicionar emprestimo
           </Button>
@@ -35,12 +56,16 @@ export function Emprestimos() {
                 <th>Livro</th>
                 <th>Status</th>
                 <th>Data de Empréstimo</th>
+                <th>Data de Entrega</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody>
               {emprestimos.map((emprestimo) => {
                 const dataEmprestimo = emprestimo.dataEmprestimo
+                  .toDate()
+                  .toLocaleDateString("pt-br");
+                const dataEntrega = emprestimo.dataEntrega
                   .toDate()
                   .toLocaleDateString("pt-br");
                 return (
@@ -51,16 +76,13 @@ export function Emprestimos() {
                     <td>{emprestimo.livro.titulo}</td>
                     <td>
                       <Badge
-                        bg={
-                          emprestimo.status === "Pendente"
-                            ? "warning"
-                            : "success"
-                        }
+                        bg={getBadgeStatus(emprestimo.status)}
                       >
                         {emprestimo.status}
                       </Badge>
                     </td>
                     <td>{dataEmprestimo}</td>
+                    <td>{dataEntrega}</td>
                     <td>
                       <Button
                         as={Link}
