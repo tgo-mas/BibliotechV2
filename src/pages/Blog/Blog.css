@@ -1,0 +1,13 @@
+.blog-form {
+    width: 600px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.text-Area-Form {
+    height: 100px !important;
+}
+
+.Valid-Text-Form {
+    color: red;
+}
