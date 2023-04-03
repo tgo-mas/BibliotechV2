@@ -32,7 +32,7 @@ export function ModalLivro({ idLivro, show, onClose }) {
                             <h2>{livro.titulo}</h2>
                             <h5>{livro.autor}</h5>
                             <p className="mt-4">
-                                Categoria: {livro.categoria} <br />
+                                Categorias: {livro.categorias} <br />
                                 ISBN: {livro.isbn}
                             </p>
                         </div>
