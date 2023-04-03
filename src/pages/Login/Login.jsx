@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
-import { Button, Container, Form, FormControl } from "react-bootstrap";
+import { Button, Container, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { InputGroup } from "react-bootstrap";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
@@ -83,7 +82,7 @@ export function Login() {
             <Form.Control
               type="email"
               placeholder="Seu email"
-              className={errors.email ? "is-invalid input-Form" : "input-Form"}
+              className={errors.email ? "is-invalid input-Form shadow" : "input-Form shadow"}
               {...register("email", { required: "Email é obrigatório" })}
             />
             <Form.Text className="invalid-feedback">
@@ -97,7 +96,7 @@ export function Login() {
                 type={mostrarSenhaV ? "text" : "password"}
                 placeholder="Sua senha"
                 className={
-                  errors.senha ? "is-invalid input-Form" : "input-Form"
+                  errors.senha ? "is-invalid input-Form shadow" : "input-Form shadow"
                 }
                 {...register("senha", { required: "Senha é obrigatória" })}
                 autoComplete="off"
@@ -117,7 +116,7 @@ export function Login() {
             <Button
               type="submit"
               variant="success"
-              className="btn-block btn-login"
+              className="btn-block btn-login shadow-sm"
             >
               Entrar
             </Button>
@@ -126,15 +125,15 @@ export function Login() {
           <p className="text-center text-muted">Outras opções de login:</p>
         </div>
         <div className="flex-c-m d-flex justify-content-center mb-3">
-          <a href="#" className="login100-social-item bg1">
+          <a href="#" className="login100-social-item bg1 shadow">
             <i className="bi bi-facebook"></i>
           </a>
-          <a href="#" className="login100-social-item bg2">
+          <a href="#" className="login100-social-item bg2 shadow">
             <i className="bi bi-github"></i>
           </a>
           <a
             href="#"
-            className="login100-social-item bg3"
+            className="login100-social-item bg3 shadow"
             onClick={onLoginGoogle}
           >
             <i className="bi bi-google"></i>
