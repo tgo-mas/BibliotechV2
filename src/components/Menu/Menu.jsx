@@ -47,7 +47,7 @@ export function Menu() {
               Emprestimos
             </Nav.Link>
             <Nav.Link as={Link} to="/">
-            {usuarioLogado.email}
+            {usuarioLogado && usuarioLogado.email}
             </Nav.Link>
             <Nav.Link onClick={()=>mudarTema(darkMode=== ''?
             'dark':'')}>
