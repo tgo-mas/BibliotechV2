@@ -16,6 +16,12 @@ const StartingPage = ({
     }
   };
 
+  const exitQuiz = () => {
+    if (window.confirm("Deseja Sair do Quiz?")) {
+      window.history.back();
+    }
+  };
+
   return (
     <Card>
       <h1 className="headerQuiz">BLIBLIOTECH QUIZ</h1>
@@ -35,6 +41,10 @@ const StartingPage = ({
       <p className="top_score">
         Pontos: <span>{topScore}</span>
       </p>
+
+      <button className="exit_btn" onClick={exitQuiz}>
+        Sair
+      </button>
     </Card>
   );
 };
