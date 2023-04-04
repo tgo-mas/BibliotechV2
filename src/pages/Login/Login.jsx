@@ -40,7 +40,7 @@ export function Login() {
   function onLoginGoogle() {
     loginGoogle()
       .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
+        toast.success(`Bem-vindo(a) ${user.displayName}`, {
           position: "bottom-right",
           duration: 2500,
         });
@@ -57,7 +57,7 @@ export function Login() {
   function onLoginFacebook() {
     loginFacebook()
       .then((res) => {
-        toast.success(`Bem-vindo(a) ${res.user.email}`, {
+        toast.success(`Bem-vindo(a) ${res.user.displayName}`, {
           position: "bottom-right",
           duration: 2500,
         });
@@ -74,7 +74,7 @@ export function Login() {
   function onLoginGitHub() {
     loginGithub()
       .then((res) => {
-        toast.success(`Bem-vindo(a) ${res.user.email}`, {
+        toast.success(`Bem-vindo(a) ${res.user.displayName}!`, {
           position: "bottom-right",
           duration: 2500,
         });

@@ -3,12 +3,12 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link } from "react-router-dom";
 import { logout } from "../../firebase/auth";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext"
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 export function Menu() {
-  const usuarioLogado = useContext (AuthContext);
+  const usuarioLogado = useContext(AuthContext);
   const [darkMode, mudarTema] = useContext(DarkModeContext);
 
   function onLogout() {
@@ -16,9 +16,9 @@ export function Menu() {
   }
 
   return (
-    <Navbar 
-      bg={darkMode==='' ? "light" : "success"}
-      variant={darkMode==='' ? "light" : "light"}
+    <Navbar
+      bg={darkMode === '' ? "light" : "success"}
+      variant={darkMode === '' ? "light" : "light"}
       expand="lg">
 
       <Container fluid>
@@ -46,13 +46,13 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
-            <Nav.Link as={Link} to="/">
-            {usuarioLogado && usuarioLogado.email}
-            </Nav.Link>
-            <Nav.Link onClick={()=>mudarTema(darkMode=== ''?
-            'dark':'')}>
-              <i className={darkMode==='' ? "bi bi-sun" :
-              "bi bi-moon"}></i>
+            {usuarioLogado && <Nav.Link as={Link} to="/">
+              {usuarioLogado.email === null ? usuarioLogado.displayName : usuarioLogado.email}
+            </Nav.Link>}
+            <Nav.Link onClick={() => mudarTema(darkMode === '' ?
+              'dark' : '')}>
+              <i className={darkMode === '' ? "bi bi-sun" :
+                "bi bi-moon"}></i>
             </Nav.Link>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
