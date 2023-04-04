@@ -11,13 +11,13 @@ export function Root() {
   const navigator = useNavigate();
 
   useEffect(() => {
-    if(usuarioLogado === null){
+    if (usuarioLogado === null) {
       navigator("/loading");
     }
   }, [navigator, usuarioLogado])
 
   setTimeout(() => {
-    if(usuarioLogado === null){
+    if (usuarioLogado === null) {
       navigator("/login");
     }
   }, 1500);
@@ -31,7 +31,7 @@ export function Root() {
         <Outlet />
       </main>
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </>
   );
