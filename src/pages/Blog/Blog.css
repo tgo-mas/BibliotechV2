@@ -1,0 +1,21 @@
+.blog-form {
+  width: 600px;
+  width: 60%;
+  margin: 0 auto;
+}
+.text-Area-Form {
+  height: 100px !important;
+}
+.Valid-Text-Form {
+  color: red;
+}
+.img-Blog {
+  width: 50px;
+}
+.card-postagens-section {
+  width: 60% !important;
+  margin: 0 auto;
+}
+.btn-Icons-Blog {
+  width: 80%;
+}

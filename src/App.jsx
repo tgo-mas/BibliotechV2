@@ -14,7 +14,9 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
+import { Blog } from "./pages/Blog/Blog";
 import { React } from 'react'
 import { DarkModeContext } from "./contexts/DarkModeContext";
 
@@ -54,6 +56,7 @@ useEffect(() => {
             <Route path="/" element={<Root />}>
               <Route path="/" element={<Home />} />
               <Route path="/livros" element={<Livros />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
               <Route path="/livros/editar/:id" element={<EditarLivro />} />
               <Route path="/emprestimos" element={<Emprestimos />} />
@@ -62,6 +65,7 @@ useEffect(() => {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/loading" element={<Carregamento />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

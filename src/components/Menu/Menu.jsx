@@ -1,22 +1,18 @@
 import "./Menu.css";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext"
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 export function Menu() {
-  const navigate = useNavigate();
   const usuarioLogado = useContext (AuthContext);
   const [darkMode, mudarTema] = useContext(DarkModeContext);
 
   function onLogout() {
-    logout().then(() => {
-      navigate("/login");
-    
-    });
+    logout();
   }
 
   return (
@@ -37,6 +33,9 @@ export function Menu() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">
               Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/blog">
+              Blog
             </Nav.Link>
             <Nav.Link as={Link} to="/livros">
               Livros
