@@ -1,26 +1,49 @@
-import { Container, Form } from "react-bootstrap";
-import "./Blog.css";
+import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { addPost, getPost } from "../../firebase/postagens";
+import { toast } from "react-hot-toast";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import "./Blog.css";
 
 export function Blog() {
+  const [post, setPost] = useState([]);
+  function initializeTable() {
+    getPost().then((resultados) => {
+      setPost(resultados);
+    });
+  }
+  useEffect(() => {
+    initializeTable();
+  }, [onSubmit]);
+
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
   function onSubmit(data) {
-    console.log(data);
+    const postData = { ...data, email: usuarioLogado?.email };
+    addPost(postData).then(() => {
+      toast.success(`Postado com sucesso!`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      reset();
+    });
   }
+  const usuarioLogado = useContext(AuthContext);
   return (
     <Container>
       <div className="blog-form">
-        <h2 className="mt-5">Blog</h2>
+        <h2 className="mt-5">Olá, {usuarioLogado?.email}</h2>
         <hr />
-        <form class="form-floating" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form-floating" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="floatingInputValue"
             placeholder="a"
             {...register("titulo", {
@@ -29,11 +52,13 @@ export function Blog() {
               minLength: { value: 3, message: "Minimo de 3 caracteres!" },
             })}
           />
-          <span className="Valid-Text-Form mt-1 ms-2">{errors.titulo?.message}</span>
-          <label for="floatingInputValue">Titulo</label>
-          <div class="form-floating">
+          <span className="Valid-Text-Form mt-1 ms-2">
+            {errors.titulo?.message}
+          </span>
+          <label>Titulo</label>
+          <div className="form-floating">
             <textarea
-              class="form-control text-Area-Form"
+              className="form-control text-Area-Form"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
               {...register("postagem", {
@@ -42,18 +67,45 @@ export function Blog() {
                 minLength: { value: 4, message: "Minimo de 4 caracteres!" },
               })}
             ></textarea>
-            <label for="floatingTextarea2">Texto de postagem.</label>
-            <span className="Valid-Text-Form mt-1 ms-2">{errors.postagem?.message}</span>
+            <label>Texto de postagem</label>
+            <span className="Valid-Text-Form mt-1 ms-2">
+              {errors.postagem?.message}
+            </span>
           </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
-            <button class="btn btn-success mt-1" type="submit">
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+            <button className="btn btn-success mt-1" type="submit">
               Postar
-              <i class="bi bi-pencil ms-2"></i>
+              <i className="bi bi-pencil ms-2"></i>
             </button>
           </div>
         </form>
       </div>
       <hr />
+      {post.map((post) => {
+        return (
+          <section key={post.id} className="card-postagens-section">
+            <div className="card-postagens">
+              <div className="blog-div-img mb-3 d-flex align-items-center">
+                <img
+                  className="img-Blog"
+                  src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png"
+                  alt=""
+                />
+                <h4 className="user-name-blog ml-3 ms-3">{post.email}</h4>
+              </div>
+              <p>{post.titulo}</p>
+              <h6>{post.postagem}</h6>
+            </div>
+            <div className="btn-Icons-Blog d-flex justify-content-between mb-3 mt-1">
+              <i className="bi bi-chat"></i>
+              <i className="bi bi-share"></i>
+              <i className="bi bi-heart"></i>
+              <i className="bi bi-arrow-bar-up"></i>
+            </div>
+            <hr />
+          </section>
+        );
+      })}
     </Container>
   );
 }
