@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Container, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginFacebook, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.png";
@@ -55,11 +55,28 @@ export function Cadastro() {
         });
       });
   }
-  
+
+  function onLoginFacebook() {
+    loginFacebook()
+      .then((res) => {
+        toast.success(`Bem-vindo(a) ${res.user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. ${erro.message}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      })
+  }
+
   const mostrarSenha = () => {
     SetMostrarSenha(!mostrarSenhaV);
   };
-  return  (
+  return (
     <Container fluid className="my-5">
       <hr />
       <Form
@@ -103,7 +120,7 @@ export function Cadastro() {
               {errors.senha?.message}
             </Form.Text>
             <p className="text-muted mt-3">
-            Já possui conta? <Link to="/login">Login</Link>
+              Já possui conta? <Link to="/login">Login</Link>
             </p>
           </Form.Group>
           <div className="btn-Form-Login d-flex justify-content-center w-100">
@@ -119,7 +136,11 @@ export function Cadastro() {
           <p className="text-center text-muted">Outras opções de cadastro:</p>
         </div>
         <div className="flex-c-m d-flex justify-content-center mb-3">
-          <a href="#" className="login100-social-item bg1">
+          <a
+            href="#"
+            className="login100-social-item bg1"
+            onClick={onLoginFacebook}
+          >
             <i className="bi bi-facebook"></i>
           </a>
           <a href="#" className="login100-social-item bg2">

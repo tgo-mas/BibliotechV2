@@ -18,26 +18,40 @@ import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Blog } from "./pages/Blog/Blog";
 import QuizInit from "./components/Quiz/QuizInit";
+import { React } from 'react'
+import { DarkModeContext } from "./contexts/DarkModeContext";
 
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  // O Estado irá controlar qual tema será utilizado
+  const [darkMode, setDarkMode] = useState("");
+  
+  // Criando a função que irá trocar o tema
+  // Terá acesso a função em qualquer parte do app
+  // O valor do tema e a função que muda o tema
+  function mudarTema(theme) {
+    if (theme !== darkMode) {
+        setDarkMode(theme);
+    }
+}
+useEffect(() => {
+  // Monitorar o usuário conectado
+  // Logado/Deslogado
+  onAuthStateChanged(auth, (user) => {
+    // user nulo é deslogado
+    // user objeto é logado
+    setUsuarioLogado(user);
+  });
 
-  useEffect(() => {
-    // Monitorar/detectar o usuário conectado
-    // Fica sabendo quando loga/desloga
-    onAuthStateChanged(auth, (user) => {
-      // user é nulo = deslogado
-      // user tem objeto = logado
-      setUsuarioLogado(user);
-    });
-    // Esse efeito irá rodar apenas uma vez
-    // Quando o App for renderizado/inicializado
-  }, []);
+  // Esse efeito irá rodar apenas uma vez
+  // Quando o App for renderizado/inicializado
+}, []);
 
   return (
     <>
-      <AuthContext.Provider value={usuarioLogado}>
+        <AuthContext.Provider value={usuarioLogado}>
+        <DarkModeContext.Provider value={[darkMode, mudarTema]}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Root />}>
@@ -57,7 +71,8 @@ export function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        </DarkModeContext.Provider>
       </AuthContext.Provider>
       <Toaster />
-    </>);
-}
+    </>
+  )};
