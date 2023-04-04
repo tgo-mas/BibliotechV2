@@ -17,6 +17,8 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Blog } from "./pages/Blog/Blog";
+import QuizInit from "./components/Quiz/QuizInit";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -51,6 +53,7 @@ export function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/loading" element={<Carregamento />} />
+            <Route path="/Quiz" element={<QuizInit />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
