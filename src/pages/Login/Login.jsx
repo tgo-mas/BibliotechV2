@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 import "./Login.css";
 
 export function Login() {
@@ -56,6 +56,23 @@ export function Login() {
 
   function onLoginFacebook() {
     loginFacebook()
+      .then((res) => {
+        toast.success(`Bem-vindo(a) ${res.user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. ${erro.message}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      })
+  }
+
+  function onLoginGitHub() {
+    loginGithub()
       .then((res) => {
         toast.success(`Bem-vindo(a) ${res.user.email}`, {
           position: "bottom-right",
@@ -152,6 +169,7 @@ export function Login() {
           <a
             href="#"
             className="login100-social-item bg2 shadow"
+            onClick={onLoginGitHub}
           >
             <i className="bi bi-github"></i>
           </a>

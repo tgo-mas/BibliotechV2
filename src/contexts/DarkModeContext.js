@@ -1,6 +1,4 @@
-import { createContext, useContext } from "react";
-import { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
+import { createContext } from "react";
 
 // O contexto para a aplicação
 export const DarkModeContext = createContext();
