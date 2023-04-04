@@ -17,6 +17,7 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Blog } from "./pages/Blog/Blog";
+import QuizInit from "./components/Quiz/QuizInit";
 import { React } from 'react'
 import { DarkModeContext } from "./contexts/DarkModeContext";
 
@@ -66,6 +67,7 @@ useEffect(() => {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/loading" element={<Carregamento />} />
+            <Route path="/Quiz" element={<QuizInit />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

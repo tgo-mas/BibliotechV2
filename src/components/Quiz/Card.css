@@ -1,0 +1,9 @@
+.cardQuiz {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  position: relative;
+  border: 1px solid #262625;
+  background-color: #586F8C;
+}

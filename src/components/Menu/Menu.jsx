@@ -1,5 +1,5 @@
 import "./Menu.css";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link } from "react-router-dom";
 import { logout } from "../../firebase/auth";
@@ -33,6 +33,9 @@ export function Menu() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">
               Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="../Quiz">
+              Quiz
             </Nav.Link>
             <Nav.Link as={Link} to="/blog">
               Blog
