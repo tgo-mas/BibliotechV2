@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css"
+import { DarkModeContext } from "../../contexts/DarkModeContext";
+import "../../DarkMode.css"
 
 export  function Footer () {
+    const [darkMode] = useContext (DarkModeContext)
     return(
         <>
-        <footer className="text-center  text-lg-start bg-light text-muted">
+        <footer className="text-center dark text-lg-start text-muted">
 
-        <section className="header d-flex justify-content-center justify-content-lg-between p-2">
+        <section className={"header d-flex justify-content-center justify-content-lg-between p-2 " + darkMode}>
 
             <div className="me-3 d-none d-lg-block fw-bold">
                 <span>SE CONECTE A NOSSA RED-SOCIAIS</span>
@@ -33,7 +36,7 @@ export  function Footer () {
         </section>
 
 
-        <section className="conteudo">
+        <section className={"conteudo " + darkMode}  >
             <div className="container text-center text-md-start">
 
                 <div className="row p-2">
@@ -116,7 +119,7 @@ export  function Footer () {
 
 
 
-        <div className="end  text-center p-2">
+        <div className={"end  text-center p-2 " + darkMode}>
             2023© Copyright:
             <Link className="text-reset fw-bold" to="#" > BiblioTech</Link>
         </div>
