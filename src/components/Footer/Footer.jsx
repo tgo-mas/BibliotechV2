@@ -58,11 +58,11 @@ export  function Footer () {
                         </h4>
 
                         <p>
-                            <Link to="/livros" className="text-reset"> Inicio </Link>
+                            <Link to="/" className="text-reset"> Inicio </Link>
                         </p>
 
                         <p>
-                            <Link to="/" className="text-reset"> Sobre </Link>
+                            <Link to="/Sobre" className="text-reset"> Sobre </Link>
                         </p>
 
                         <p>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Accordion, ListGroup } from "react-bootstrap";
 import BsTabs from './BsTabs';
+import { Footer } from "../../components/Footer/Footer";
 
 
 const Politica = () => {
@@ -93,7 +94,11 @@ const Politica = () => {
       <h6>
       Se tiver dúvidas ou preocupações sobre esta Política de Privacidade ou sobre as práticas de coleta, uso ou divulgação de informações pessoais pelo Bibliotech, entre em contato conosco pelo e-mail: contato@bibliotech.com
       </h6>
+
+      <Footer/>
+      
     </Container>
+    
   );
 };
 

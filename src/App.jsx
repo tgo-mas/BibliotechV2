@@ -21,6 +21,7 @@ import QuizInit from "./components/Quiz/QuizInit";
 import { React } from "react";
 import { DarkModeContext } from "./contexts/DarkModeContext";
 import Politica from "./pages/Politica/Politica";
+import { Sobre } from "./pages/Sobre/Sobre";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
