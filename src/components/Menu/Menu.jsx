@@ -8,7 +8,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 const menuItems = [
-  { to: "/", label: "Home" },
+  { to: "/BibliotechV2", label: "Home" },
   { to: "/quiz", label: "Quiz" },
   { to: "/blog", label: "Blog" },
   { to: "/livros", label: "Livros" },
@@ -36,7 +36,7 @@ export function Menu() {
     >
       <Container fluid>
         <Navbar.Brand>
-          <Link to="/">
+          <Link to="/BibliotechV2">
             <img
               src={logoIcon}
               width="32"
@@ -57,7 +57,7 @@ export function Menu() {
               >
                 <span
                   className={
-                    darkMode === ""
+                    darkMode === "light"
                       ? "spanHomeLink hover-underline-dark"
                       : "spanHomeLink hover-underline-light"
                   }

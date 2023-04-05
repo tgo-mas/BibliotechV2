@@ -27,7 +27,7 @@ export function Login() {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/");
+        navigate("/BibliotechV2");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
@@ -44,7 +44,7 @@ export function Login() {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/");
+        navigate("/BibliotechV2");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
@@ -61,7 +61,7 @@ export function Login() {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/");
+        navigate("/BibliotechV2");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. ${erro.message}`, {
@@ -78,7 +78,7 @@ export function Login() {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/");
+        navigate("/BibliotechV2");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. ${erro.message}`, {
@@ -96,7 +96,7 @@ export function Login() {
 
   // Se tiver dados no objeto, está logado
   if (usuarioLogado !== null) {
-    return <Navigate to="/" />;
+    return <Navigate to="/BibliotechV2" />;
   }
 
   return (
