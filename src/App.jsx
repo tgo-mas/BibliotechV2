@@ -21,6 +21,7 @@ import QuizInit from "./components/Quiz/QuizInit";
 import { React } from 'react'
 import { DarkModeContext } from "./contexts/DarkModeContext";
 import Politica from "./pages/Politica/Politica";
+import { Sobre } from "./pages/Sobre/Sobre";
 
 
 export function App() {
@@ -70,6 +71,7 @@ useEffect(() => {
             <Route path="/loading" element={<Carregamento />} />
             <Route path="/Quiz" element={<QuizInit />} />
             <Route path="/Politica" element={<Politica />} />
+            <Route path="/Sobre" element={<Sobre />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
