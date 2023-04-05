@@ -9,7 +9,7 @@ import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 export function Menu() {
   const usuarioLogado = useContext (AuthContext);
-  const [darkMode, mudarTema] = useContext(DarkModeContext);
+  const {darkMode, mudarTema} = useContext(DarkModeContext);
 
   function onLogout() {
     logout();
@@ -17,8 +17,8 @@ export function Menu() {
 
   return (
     <Navbar 
-      bg={darkMode==='' ? "light" : "success"}
-      variant={darkMode==='' ? "light" : "light"}
+      bg={darkMode==='light' ? "light" : "success"}
+      variant={darkMode==='light' ? "light" : "light"}
       expand="lg">
 
       <Container fluid>
@@ -49,10 +49,15 @@ export function Menu() {
             <Nav.Link as={Link} to="/">
             {usuarioLogado && usuarioLogado.email}
             </Nav.Link>
-            <Nav.Link onClick={()=>mudarTema(darkMode=== ''?
-            'dark':'')}>
-              <i className={darkMode==='' ? "bi bi-sun" :
-              "bi bi-moon"}></i>
+            <Nav.Link onClick={() => mudarTema(darkMode === 'light'?
+            'dark': 'light')}>
+              <i 
+              className={
+                darkMode === "light" 
+              ? "bi bi-sun spanHomeLink" 
+              :"bi bi-moon spanHomeLink"
+              }
+            ></i>
             </Nav.Link>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
