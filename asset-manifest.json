@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BibliotechV2/static/css/main.4c3f4639.css",
+    "main.js": "/BibliotechV2/static/js/main.978fa48a.js",
+    "static/media/login.png": "/BibliotechV2/static/media/login.cbc9af2ac309dd43be3b.png",
+    "static/media/livros.png": "/BibliotechV2/static/media/livros.0cdc164d4436b2e160f1.png",
+    "index.html": "/BibliotechV2/index.html",
+    "main.4c3f4639.css.map": "/BibliotechV2/static/css/main.4c3f4639.css.map",
+    "main.978fa48a.js.map": "/BibliotechV2/static/js/main.978fa48a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c3f4639.css",
+    "static/js/main.978fa48a.js"
+  ]
+}
