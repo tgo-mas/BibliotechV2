@@ -5,7 +5,7 @@ import { DarkModeContext } from "../../contexts/DarkModeContext";
 import "../../DarkMode.css"
 
 export  function Footer () {
-    const [darkMode] = useContext (DarkModeContext)
+    const {darkMode} = useContext (DarkModeContext)
     return(
         <>
         <footer className="text-center dark text-lg-start text-muted">

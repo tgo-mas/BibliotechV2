@@ -17,10 +17,10 @@ const menuItems = [
 
 export function Menu() {
   const usuarioLogado = useContext(AuthContext);
-  const [darkMode, mudarTema] = useContext(DarkModeContext);
+  const {darkMode, mudarTema} = useContext(DarkModeContext);
   const navBarTheme = {
-    color: darkMode === "" ? "#212529" : "#f8f9fa",
-    backgroundColor: darkMode === "" ? "#f8f9fa" : "#212529",
+    color: darkMode === "light" ? "#212529" : "#f8f9fa",
+    backgroundColor: darkMode === "light" ? "#f8f9fa" : "#212529",
   };
 
   function onLogout() {
@@ -31,8 +31,8 @@ export function Menu() {
     <Navbar
       style={navBarTheme}
       expand="lg"
-      variant={darkMode === "" ? "light" : "dark"}
-      className={darkMode === "" ? "darkBorder" : "lighBorder"}
+      variant={darkMode === "light" ? "light" : "dark"}
+      className={darkMode === "light" ? "darkBorder" : "lighBorder"}
     >
       <Container fluid>
         <Navbar.Brand>
@@ -77,14 +77,15 @@ export function Menu() {
                 {usuarioLogado && usuarioLogado.email}
               </span>
             </Nav.Link>
-            <Nav.Link onClick={() => mudarTema(darkMode === "" ? "dark" : "")}>
-              <i
-                className={
-                  darkMode === ""
-                    ? "bi bi-sun spanHomeLink"
-                    : "bi bi-moon spanHomeLink"
-                }
-              ></i>
+            <Nav.Link onClick={() => mudarTema(darkMode === 'light'?
+            'dark': 'light')}>
+              <i 
+              className={
+                darkMode === "light" 
+              ? "bi bi-sun spanHomeLink" 
+              :"bi bi-moon spanHomeLink"
+              }
+            ></i>
             </Nav.Link>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right me-2 spanHomeLink"></i>
