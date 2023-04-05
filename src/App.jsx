@@ -88,6 +88,7 @@ export function App() {
               <Route path="/loading" element={<Carregamento />} />
               <Route path="/Quiz" element={<QuizInit />} />
               <Route path="/Politica" element={<Politica />} />
+              <Route path="/Sobre" element={<Sobre />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
