@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+import { VisaoGeral } from "../../components/VisaoGeral/VisaoGeral";
 
 export function Home() {
-  const resultado = useContext(DarkModeContext);
-  const darkMode = resultado.darkMode;
-
+  const [darkMode]= useContext(DarkModeContext);
 
   return (
-    <div className={darkMode ? "bg-dark text-light" : "bg-light text-dark"}>
-      <p>Home</p>
+    <div className={(darkMode === "dark" ? "bg-dark text-light" : "bg-light text-dark") + " p-3"}>
+      <VisaoGeral />
     </div>
   )
 };

@@ -1,0 +1,17 @@
+.cardBody{
+    font-size: 65px;
+    font-weight: 700;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardBodyDuplo{
+    font-size: 35px;
+    padding: 0;
+}
+
+.cardBodyDuplo div{
+    font-size: 20px;
+}
