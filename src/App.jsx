@@ -22,7 +22,6 @@ import { React } from "react";
 import { DarkModeContext } from "./contexts/DarkModeContext";
 import Politica from "./pages/Politica/Politica";
 
-
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   // O Estado irá controlar qual tema será utilizado
@@ -32,38 +31,39 @@ export function App() {
   // Terá acesso a função em qualquer parte do app
   // O valor do tema e a função que muda o tema
   function mudarTema(theme) {
-  if (theme !== darkMode) {
-  setDarkMode(theme);
-  localStorage.setItem("darkMode", theme);
+    if (theme !== darkMode) {
+      setDarkMode(theme);
+      localStorage.setItem("darkMode", theme);
+    }
   }
-}
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUsuarioLogado(user);
     });
-    
   }, []);
 
-  const changeTema = useCallback((theme) =>{
-    mudarTema(theme);
-  },[mudarTema] )
-useEffect(() => {
-  const mode = localStorage.getItem("darkMode");
-if (mode && mode === "dark") {
-document.querySelector("html").classList.remove("light"); //Caso contrário remove a classe 'dark' e setamos o estado do tema 'light'
-  changeTema("dark");
+  const changeTema = useCallback(
+    (theme) => {
+      mudarTema(theme);
+    },
+    [mudarTema]
+  );
+  useEffect(() => {
+    const mode = localStorage.getItem("darkMode");
+    if (mode && mode === "dark") {
+      document.querySelector("html").classList.remove("light"); //Caso contrário remove a classe 'dark' e setamos o estado do tema 'light'
+      changeTema("dark");
     } else {
-  document.querySelector("html").classList.add("light"); //Caso dê verdadeiro,adiciona a classe dark no 'body' e setamos o estado do tema 'light'
-  changeTema("light");
+      document.querySelector("html").classList.add("light"); //Caso dê verdadeiro,adiciona a classe dark no 'body' e setamos o estado do tema 'light'
+      changeTema("light");
     }
-}, [changeTema]);
-
+  }, [changeTema]);
 
   return (
     <>
       <AuthContext.Provider value={usuarioLogado}>
-        <DarkModeContext.Provider value={{darkMode, mudarTema}}>
+        <DarkModeContext.Provider value={{ darkMode, mudarTema }}>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Root />}>
@@ -86,7 +86,7 @@ document.querySelector("html").classList.remove("light"); //Caso contrário remo
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/loading" element={<Carregamento />} />
               <Route path="/Quiz" element={<QuizInit />} />
-            <Route path="/Politica" element={<Politica />} />
+              <Route path="/Politica" element={<Politica />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

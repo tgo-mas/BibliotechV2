@@ -19,8 +19,8 @@ export function Menu() {
   const usuarioLogado = useContext(AuthContext);
   const {darkMode, mudarTema} = useContext(DarkModeContext);
   const navBarTheme = {
-    color: darkMode === "" ? "#212529" : "#f8f9fa",
-    backgroundColor: darkMode === "" ? "#f8f9fa" : "#212529",
+    color: darkMode === "light" ? "#212529" : "#f8f9fa",
+    backgroundColor: darkMode === "light" ? "#f8f9fa" : "#212529",
   };
 
   function onLogout() {
