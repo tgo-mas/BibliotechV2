@@ -58,7 +58,7 @@ export  function Footer () {
                         </h4>
 
                         <p>
-                            <Link to="/" className="text-reset"> Inicio </Link>
+                            <Link to="/livros" className="text-reset"> Inicio </Link>
                         </p>
 
                         <p>
@@ -66,11 +66,7 @@ export  function Footer () {
                         </p>
 
                         <p>
-                            <Link to="/" className="text-reset"> Livros </Link>
-                        </p>
-
-                        <p>
-                            <Link to="/" className="text-reset"> Vendas </Link>
+                            <Link to="/Politica" className="text-reset"> Politica </Link>
                         </p>
                     </div>
 
@@ -89,9 +85,6 @@ export  function Footer () {
                         </p>
                         <p>
                             <Link to="/" className="text-reset"> Noticias </Link>
-                        </p>
-                        <p>
-                            <Link to="/" className="text-reset"> Revista </Link>
                         </p>
                     </div>
 
@@ -120,8 +113,8 @@ export  function Footer () {
 
 
         <div className={"end  text-center p-2 " + darkMode}>
-            2023© Copyright:
-            <Link className="text-reset fw-bold" to="#" > BiblioTech</Link>
+            <Link className="text-reset fw-bold" to="#" > BiblioTech </Link>
+              2023© Copyright
         </div>
 
         </footer>

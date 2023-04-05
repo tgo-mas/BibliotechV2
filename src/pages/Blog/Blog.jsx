@@ -97,10 +97,10 @@ export function Blog() {
               <h6>{post.postagem}</h6>
             </div>
             <div className="btn-Icons-Blog d-flex justify-content-between mb-3 mt-1">
-              <i className="bi bi-chat"></i>
-              <i className="bi bi-share"></i>
-              <i className="bi bi-heart"></i>
-              <i className="bi bi-arrow-bar-up"></i>
+              <i className="bi bi-chat icn-a"></i>
+              <i className="bi bi-share icn-b"></i>
+              <i className="bi bi-heart icn-c"></i>
+              <i className="bi bi-arrow-bar-up icn-d"></i>
             </div>
             <hr />
           </section>

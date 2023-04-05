@@ -1,0 +1,90 @@
+.Navbar a {
+  color: #fff;
+}
+
+.Navbar .nav-link.active {
+  background-color: #7da0c6;
+  color: #fff;
+}
+.Navbar a:hover {
+  background-color: #7da0c6;
+  color: #fff;
+}
+.darkBorder {
+  border-bottom: 1px solid black;
+}
+.lighBorder {
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.spanHomeLink {
+  position: relative;
+  display: inline-block;
+}
+
+.spanHomeLink:hover {
+  transform: translateY(-1px);
+}
+.spanHomeLink {
+  transition: transform 0.2s ease-in-out;
+}
+
+.img-form:hover {
+  position: relative;
+  display: inline-block;
+}
+
+.img-form:hover {
+  transform: scale(1.1);
+}
+
+.img-form {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-underline-dark {
+  position: relative;
+  padding-bottom: 1px;
+}
+
+.hover-underline-dark:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #1106067a;
+  transform-origin: center;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-dark:after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+.hover-underline-light {
+    position: relative;
+    padding-bottom: 1px;
+  }
+  
+  .hover-underline-light:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff7a;
+    transform-origin: center;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .cta:hover .hover-underline-light:after {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+  
