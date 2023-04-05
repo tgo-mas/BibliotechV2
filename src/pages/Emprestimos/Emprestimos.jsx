@@ -12,7 +12,7 @@ export function Emprestimos() {
       busca.forEach((emprestimo) => {
         let agora = new Date(Date.now());
         console.log(emprestimo.dataEntrega);
-        if(agora.getTime() > emprestimo.dataEntrega.toDate().getTime() && emprestimo.status !== "Atrasado"){
+        if(agora.getTime() > emprestimo.dataEntrega.toDate().getTime() && emprestimo.status === "Pendente"){
             emprestimo.status = "Atrasado";
             updateEmprestimo(emprestimo.id, emprestimo);
         }
@@ -45,7 +45,7 @@ export function Emprestimos() {
         </div>
         <hr />
         {emprestimos === null ? (
-          <Loader />
+          <Loader className="m-3" />
         ) : (
           <Table striped bordered hover className="text-center">
             <thead>
