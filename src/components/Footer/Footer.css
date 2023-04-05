@@ -1,14 +1,18 @@
 .header {
-    background-color:#586F8C;
-    color: #262625;
+  background-color: #a7a7a7;
+  border: 1px solid black;
+  color: #030300;
 }
-
 .conteudo {
-    background-color: #495B73;
-    color: #A6A6A6;
+  background-color: rgb(197, 197, 197);
+  color: #030300;
+}
+.end {
+  background-color: #a7a7a7;
+  border: 1px solid black;
+  color: #030300;
 }
 
-.end {
-    background-color:#586F8C;
-    color: #262625;
+.textDecorationB {
+    text-decoration: none;
 }

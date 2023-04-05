@@ -17,7 +17,7 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Carregamento } from "./pages/Carregamento/Carregamento";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { Blog } from "./pages/Blog/Blog";
-import QuizInit from "./components/Quiz/QuizInit";
+import QuizInit from "./pages/Quiz/QuizInit";
 import { React } from "react";
 import { DarkModeContext } from "./contexts/DarkModeContext";
 import Politica from "./pages/Politica/Politica";
