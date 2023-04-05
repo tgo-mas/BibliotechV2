@@ -7,7 +7,7 @@ import "./VisaoGeral.css"
 
 export function VisaoGeral() {
 
-    const [darkMode] = useContext(DarkModeContext);
+    const {darkMode} = useContext(DarkModeContext);
     const [totalEmprestimos, setTotalEmprestimos] = useState([0, 0, 0, 0]);
     const [totalLivros, setTotalLivros] = useState(0);
 
