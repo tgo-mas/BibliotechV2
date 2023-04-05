@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Blog.css";
 
+
 export function Blog() {
   const [post, setPost] = useState([]);
   function initializeTable() {
@@ -43,7 +44,7 @@ export function Blog() {
         <form className="form-floating" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            className="form-control"
+            className="form-control intp-Form-Blog-dark"
             id="floatingInputValue"
             placeholder="a"
             {...register("titulo", {
@@ -58,7 +59,7 @@ export function Blog() {
           <label>Titulo</label>
           <div className="form-floating">
             <textarea
-              className="form-control text-Area-Form"
+              className="form-control text-Area-Form intp-Form-Blog-dark"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
               {...register("postagem", {
@@ -73,7 +74,7 @@ export function Blog() {
             </span>
           </div>
           <div className="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
-            <button className="btn btn-success mt-1" type="submit">
+            <button className="btn-Post mt-1" type="submit">
               Postar
               <i className="bi bi-pencil ms-2"></i>
             </button>
@@ -83,7 +84,8 @@ export function Blog() {
       <hr />
       {post.map((post) => {
         return (
-          <section key={post.id} className="card-postagens-section">
+          <div className="p-3 m-2 borderPost" key={post.id}>
+            <section className="card-postagens-section">
             <div className="card-postagens">
               <div className="blog-div-img mb-3 d-flex align-items-center">
                 <img
@@ -104,6 +106,7 @@ export function Blog() {
             </div>
             <hr />
           </section>
+          </div>
         );
       })}
     </Container>
