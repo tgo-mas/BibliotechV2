@@ -48,7 +48,7 @@ export function Blog() {
             placeholder="a"
             {...register("titulo", {
               required: "Titulo é obrigatório!",
-              maxLength: { value: 16, message: "Limite de 16 caracteres!" },
+              maxLength: { value: 35, message: "Limite de 35 caracteres!" },
               minLength: { value: 3, message: "Minimo de 3 caracteres!" },
             })}
           />

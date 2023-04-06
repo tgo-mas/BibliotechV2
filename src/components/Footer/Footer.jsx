@@ -47,7 +47,7 @@ export function Footer() {
               <div className="col-md-2 col-sm-2 col-xl-2 mx-auto mb-2">
                 <h4 className="text-uppercase fw-bold mb-2">links</h4>
                 <p>
-                  <Link to="/" className="text-reset">
+                  <Link to="/BibliotechV2" className="text-reset">
                     {" "}
                     Inicio{" "}
                   </Link>
@@ -55,7 +55,7 @@ export function Footer() {
                 <p>
                   <Link to="/Sobre" className="text-reset">
                     {" "}
-                    Sobre{" "}
+                    Ajuda{" "}
                   </Link>
                 </p>
                 <p>
@@ -68,7 +68,7 @@ export function Footer() {
               <div className="col-md-2 col-sm-2 col-xl-2 mx-auto mb-2">
                 <h4 className="text-uppercase fw-bold mb-2">Serviços</h4>
                 <p>
-                  <Link to="/" className="text-reset">
+                  <Link to="/blog" className="text-reset">
                     {" "}
                     Blog{" "}
                   </Link>

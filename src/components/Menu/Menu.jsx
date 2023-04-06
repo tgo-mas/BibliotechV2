@@ -32,7 +32,7 @@ export function Menu() {
       style={navBarTheme}
       expand="lg"
       variant={darkMode === "light" ? "light" : "dark"}
-      className={darkMode === "light" ? "darkBorder" : "lighBorder"}
+      className={darkMode === "light" ? "light-theme" : "lighBorder"}
     >
       <Container fluid>
         <Navbar.Brand>
