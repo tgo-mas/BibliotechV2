@@ -2,11 +2,14 @@ import { Container, Table } from "react-bootstrap";
 import { getUltimosEmprestimos } from "../../firebase/emprestimos";
 import { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+import TimeAgo from "timeago-react"
+import * as timeago from 'timeago.js';
+import pt_BR from 'timeago.js/lib/lang/pt_BR';
 
 export function UltimosEmprestimos() {
 
     const [ultimosEmprestimos, setUltimosEmprestimos] = useState([]);
-    const {darkMode} = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
 
     useEffect(() => {
         getUltimosEmprestimos()
@@ -14,6 +17,9 @@ export function UltimosEmprestimos() {
                 setUltimosEmprestimos(emps);
             })
     }, [])
+
+    // register it.
+    timeago.register('pt_BR', pt_BR);
 
     return (
         <Container>
@@ -32,8 +38,8 @@ export function UltimosEmprestimos() {
                             return (
                                 <tr>
                                     <td>{emp.leitor}</td>
-                                    <td>{emp.livro}</td>
-                                    <td>{emp.dataEmprestimo}</td>
+                                    <td>{emp.livro.titulo}</td>
+                                    <td><TimeAgo datetime={emp.dataEmprestimo.toDate()} locale="pt_BR" /></td>
                                 </tr>
                             )
                         })}

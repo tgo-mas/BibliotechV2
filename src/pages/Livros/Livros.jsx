@@ -13,7 +13,7 @@ export function Livros() {
   const [show, setShow] = useState(false);
   const [livroModal, setLivroModal] = useState(null);
   const { darkMode } = useContext(DarkModeContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     initializeTable();
@@ -78,7 +78,7 @@ export function Livros() {
         </div>
         <hr />
         {livros === null ? (
-          <Loader />
+          <Container className="p-3 m-3"><Loader /></Container>
         ) : (
           <Table
             striped
