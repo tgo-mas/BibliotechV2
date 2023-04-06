@@ -46,10 +46,10 @@ export function Emprestimos() {
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Empréstimos</h1>
-          <button src="/livros/adicionar" className={darkMode ? "contactButtonDark shadow" : "contactButtonLight shadow"} onClick={onCreatEmprestimo}>
+          <button src="/livros/adicionar" className={darkMode === "dark" ? "contactButtonDark shadow" : "contactButtonLight shadow"} onClick={onCreatEmprestimo}>
             {" "}
             Adicionar empréstimo 
-            <div className={darkMode ? "iconButtonDark" : "iconButtonLight"}>
+            <div className={darkMode === "dark" ? "iconButtonDark" : "iconButtonLight"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ export function Emprestimos() {
         {emprestimos === null ? (
           <Container className="p-3 m-3"><Loader /></Container>
           ) : (
-          <Table striped bordered hover className="text-center border border-2 rounded-2" variant={darkMode ? "dark" : ""}>
+          <Table striped bordered hover className="text-center border border-2 rounded-2" variant={darkMode === "dark" ? "dark" : ""}>
             <thead>
               <tr>
                 <th>Leitor</th>

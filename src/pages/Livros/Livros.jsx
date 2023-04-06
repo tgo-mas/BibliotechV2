@@ -53,14 +53,14 @@ export function Livros() {
   }
 
   return (
-    <div className={`livros ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`livros ${darkMode === "dark" ? "dark-mode" : ""}`}>
       <Container>
         <div className="d-flex justify-content-between align-items-center mt-3">
           <h1>Livros</h1>   
-          <button src="/livros/adicionar" className={darkMode ? "contactButtonDark shadow" : "contactButtonLight shadow"} onClick={onCreatBook}>
+          <button src="/livros/adicionar" className={darkMode === "dark" ? "contactButtonDark shadow" : "contactButtonLight shadow"} onClick={onCreatBook}>
             {" "}
             Adicionar
-            <div className={darkMode ? "iconButtonDark" : "iconButtonLight"}>
+            <div className={darkMode === "dark" ? "iconButtonDark" : "iconButtonLight"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ export function Livros() {
             bordered
             hover
             className="text-center"
-            variant={darkMode ? "dark" : "light"}
+            variant={darkMode === "dark" ? "dark" : "light"}
           >
             <thead className="border border-2 rounded-2">
               <tr>
