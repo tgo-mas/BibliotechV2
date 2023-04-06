@@ -68,7 +68,7 @@ export function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Root />}>
-                <Route path="/" element={<Home />} />
+                <Route path="/BibliotechV2" element={<Home />} />
                 <Route path="/livros" element={<Livros />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/livros/adicionar" element={<AdicionarLivro />} />

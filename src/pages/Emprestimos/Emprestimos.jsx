@@ -67,8 +67,8 @@ export function Emprestimos() {
         </div>
         <hr />
         {emprestimos === null ? (
-          <Loader className="m-3" />
-        ) : (
+          <Container className="p-3 m-3"><Loader /></Container>
+          ) : (
           <Table striped bordered hover className="text-center border border-2 rounded-2" variant={darkMode ? "dark" : ""}>
             <thead>
               <tr>
