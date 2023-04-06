@@ -59,7 +59,7 @@ export function VisaoGeral() {
             </div>
             <hr />
             <div
-                className={"d-flex justify-content-center gap-5 " + (darkMode === "dark" ? "bg-dark text-light" : "bg-light text-dark")}
+                className={"cards d-flex justify-content-center gap-5 " + (darkMode === "dark" ? "bg-dark text-light" : "bg-light text-dark")}
             >
                 <Card style={{ width: "300px", ...styleCard }}>
                     <Card.Title className="pt-3 mt-3 text-center">
